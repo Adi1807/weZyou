@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:we_z_you/UI/Auth_Pages/registration_page.dart';
+import 'package:we_z_you/UI/Homepage/homepage.dart';
 import 'package:we_z_you/UI/splash_screen/splash.dart';
 import 'package:we_z_you/constants/colors.dart';
 
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
               fontSize: 20, color: blackColor, fontWeight: FontWeight.bold),
         ),
       ),
-      home: const Splash(),
+      home: const Homepage(),
       routes: {
         RegistrationPage.routeName: (_) => const RegistrationPage(),
       },

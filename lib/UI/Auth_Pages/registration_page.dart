@@ -105,7 +105,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 ),
                 Text(
                   '-Connect your social media-',
-                  style: TextStyle(color: darkGreyColor),
+                  style: TextStyle(color: Colors.black54, fontSize: 14),
                 ),
                 const SizedBox(
                   height: 20,
@@ -113,14 +113,21 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 45),
                   child: Container(
-                    padding: const EdgeInsets.symmetric(vertical: 15),
+                    padding: EdgeInsets.symmetric(vertical: 15, horizontal: 40),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         border: Border.all(color: Colors.grey.shade400)),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      mainAxisSize: MainAxisSize.min,
                       children: [
-                        Icon(Icons.pedal_bike),
+                        Container(
+                            height: 20,
+                            width: 20,
+                            child: Image.asset(
+                              'assets/logo/facebook.png',
+                              fit: BoxFit.fill,
+                            )),
                         SizedBox(
                           width: 20,
                         ),
@@ -138,14 +145,24 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 45),
                   child: Container(
-                    padding: EdgeInsets.symmetric(vertical: 15),
+                    padding: EdgeInsets.symmetric(vertical: 15, horizontal: 45),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         border: Border.all(color: Colors.grey.shade400)),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      mainAxisSize: MainAxisSize.min,
                       children: [
-                        Icon(Icons.pedal_bike),
+                        Padding(
+                          padding: const EdgeInsets.only(right: 8.0),
+                          child: Container(
+                              height: 20,
+                              width: 20,
+                              child: Image.asset(
+                                'assets/logo/google.png',
+                                fit: BoxFit.fill,
+                              )),
+                        ),
                         SizedBox(
                           width: 20,
                         ),
