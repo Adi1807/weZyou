@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:we_z_you/UI/Auth_Pages/registration_page.dart';
+import 'package:we_z_you/UI/Auth_Pages/registration_page1.dart';
 import 'package:we_z_you/constants/colors.dart';
 
 class Splash extends StatelessWidget {
@@ -10,19 +11,19 @@ class Splash extends StatelessWidget {
     var theme = Theme.of(context).textTheme;
 
     return Material(
-      color: lightpinkColor,
+      color: Color(0xffe9466d),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Spacer(),
-          const Text('Hello'),
+          Image.asset('assets/logo/splash2.jpg'),
           const Spacer(),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: ElevatedButton(
                 onPressed: () {
                   Navigator.of(context)
-                      .pushReplacementNamed(RegistrationPage.routeName);
+                      .pushReplacementNamed(RegistrationPage1.routeName);
                 },
                 child: Text(
                   'Get Started',
