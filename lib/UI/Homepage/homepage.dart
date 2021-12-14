@@ -1,12 +1,13 @@
-import 'package:flutter/material.dart';
-import 'package:we_z_you/UI/Homepage/bottom_navbar.dart';
-import 'package:we_z_you/UI/Homepage/customer_msg.dart';
-import 'package:we_z_you/UI/Homepage/customer_screen.dart';
-import 'package:we_z_you/UI/checkout.dart';
-import 'package:we_z_you/UI/transaction_screen.dart';
-import 'package:we_z_you/constants/colors.dart';
+import 'package:rounded_loading_button/rounded_loading_button.dart';
+import 'package:we_z_you/UI/Fourth_page/transaction_screen.dart';
+import 'package:we_z_you/UI/Fourth_page/wallet_screen.dart';
+import 'package:we_z_you/UI/text_field_widget.dart';
+
+import '../../screens.dart';
 
 class Homepage extends StatefulWidget {
+  static const String routeName = '/Homepage';
+
   const Homepage({Key? key}) : super(key: key);
 
   @override
@@ -14,10 +15,21 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
-  appBarIcon(String text, IconData icon) {
+  TextEditingController serviceTextEditingController = TextEditingController();
+  TextEditingController priceServiceTextEditingController =
+      TextEditingController();
+  TextEditingController detailsTextEditingController = TextEditingController();
+  final RoundedLoadingButtonController _btnController =
+      RoundedLoadingButtonController();
+
+  int _index = 0;
+
+  appBarIcon(String text, IconData icon, Function onTap) {
     return InkWell(
       onTap: () {
-        bottomModelSheet();
+        // bottomModelSheet1();
+        // modelSheet2();
+        onTap();
       },
       child: Stack(
         alignment: Alignment.center,
@@ -52,6 +64,481 @@ class _HomepageState extends State<Homepage> {
         ],
       ),
     );
+  }
+
+  _dialog1(String title, String subTitle, String btnName, String linkText) {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            backgroundColor: Colors.transparent,
+            contentPadding: EdgeInsets.all(10.0),
+            content: Container(
+              margin: EdgeInsets.only(left: 0.0, right: 0.0),
+              child: Stack(
+                children: <Widget>[
+                  Container(
+                    padding: EdgeInsets.all(20),
+                    margin: EdgeInsets.only(top: 13.0, right: 8.0),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(14),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.1),
+                          spreadRadius: 5,
+                        ),
+                      ],
+                    ),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: <Widget>[
+                        Container(
+                          alignment: Alignment.center,
+                          child: Text(
+                            title,
+                            style: TextStyle(
+                              color: Colors.pink,
+                              fontSize: 20,
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Container(
+                          alignment: Alignment.center,
+                          child: Text(
+                            subTitle,
+                            style: TextStyle(
+                              color: greyColor,
+                              fontSize: 12,
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Container(
+                          height: 250,
+                          width: 80,
+                          color: Colors.grey,
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        RoundedLoadingButton(
+                          borderRadius: 20,
+                          height: 40,
+                          width: 150,
+                          onPressed: () async {},
+                          color: Colors.pink,
+                          animateOnTap: true,
+                          controller: _btnController,
+                          child: Text(
+                            btnName,
+                            style: Theme.of(context)
+                                .textTheme
+                                .subtitle1!
+                                .apply(
+                                  color: Colors.white,
+                                )
+                                .copyWith(fontWeight: FontWeight.w600),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Align(
+                          alignment: Alignment.center,
+                          child: Text(
+                            linkText,
+                            style: TextStyle(
+                              color: greyColor,
+                              fontSize: 12,
+                              decoration: TextDecoration.underline,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
+        });
+  }
+
+  Widget textFieldMethod(String hintName, IconData icon,
+      {bool isSuffix = false, bool isMultiline = false}) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8),
+      child: TextFormField(
+        maxLines: isMultiline ? 5 : 1,
+        decoration: InputDecoration(
+          suffixIcon: isSuffix ? Icon(icon) : null,
+          prefixIcon: isSuffix
+              ? null
+              : Padding(
+                  padding: isMultiline
+                      ? const EdgeInsets.only(bottom: 80)
+                      : EdgeInsets.zero,
+                  child: Icon(icon),
+                ),
+          hintText: hintName,
+          hintStyle: TextStyle(color: Colors.grey[600]),
+          fillColor: lightGreyColor,
+          filled: true,
+          border: OutlineInputBorder(
+              borderSide: BorderSide.none,
+              borderRadius: BorderRadius.circular(15)),
+        ),
+      ),
+    );
+  }
+
+  _showDialogBookingForm() {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            backgroundColor: Colors.transparent,
+            contentPadding: EdgeInsets.all(10.0),
+            content: Container(
+              margin: EdgeInsets.only(left: 0.0, right: 0.0),
+              child: Stack(
+                children: <Widget>[
+                  Container(
+                    padding: EdgeInsets.all(20),
+                    margin: EdgeInsets.only(top: 13.0, right: 8.0),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(14),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.1),
+                          spreadRadius: 5,
+                        ),
+                      ],
+                    ),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: <Widget>[
+                        Container(
+                          alignment: Alignment.center,
+                          child: Text(
+                            "Hey there",
+                            style: TextStyle(color: Colors.black, fontSize: 14),
+                          ),
+                        ),
+                        Container(
+                          alignment: Alignment.center,
+                          child: Text(
+                            "For booking Fill Form",
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        textFieldMethod('Name', Icons.person),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        textFieldMethod('Email', Icons.email),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        RoundedLoadingButton(
+                          borderRadius: 20,
+                          height: 40,
+                          width: 100,
+                          onPressed: () async {},
+                          color: Colors.pink,
+                          animateOnTap: true,
+                          controller: _btnController,
+                          child: Text(
+                            "Pay Now",
+                            style: Theme.of(context)
+                                .textTheme
+                                .subtitle1!
+                                .apply(
+                                  color: Colors.white,
+                                )
+                                .copyWith(fontWeight: FontWeight.w600),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 30,
+                        ),
+                      ],
+                    ),
+                  ),
+                  Positioned(
+                    right: 0.0,
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: Align(
+                        alignment: Alignment.topRight,
+                        child: CircleAvatar(
+                          radius: 14.0,
+                          backgroundColor: Colors.red,
+                          child: Icon(Icons.close, color: Colors.white),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
+        });
+  }
+
+  _dialog2() {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            backgroundColor: Colors.transparent,
+            contentPadding: EdgeInsets.all(10.0),
+            content: Container(
+              margin: EdgeInsets.only(left: 0.0, right: 0.0),
+              child: Stack(
+                children: <Widget>[
+                  Container(
+                    padding: EdgeInsets.only(
+                        bottom: 20, left: 20, right: 20, top: 50),
+                    margin: EdgeInsets.only(top: 13.0, right: 8.0),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(14),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.1),
+                          spreadRadius: 5,
+                        ),
+                      ],
+                    ),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: <Widget>[
+                        Container(
+                          alignment: Alignment.center,
+                          child: Text(
+                            'COME JOIN US',
+                            style: TextStyle(
+                              color: Colors.pink,
+                              fontSize: 20,
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Container(
+                          alignment: Alignment.center,
+                          child: Text(
+                            'Want to join us as Celebrity or user , your choice',
+                            style: TextStyle(
+                              color: greyColor,
+                              fontSize: 12,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        RoundedLoadingButton(
+                          borderRadius: 20,
+                          height: 30,
+                          width: 100,
+                          onPressed: () async {},
+                          color: Colors.pink,
+                          animateOnTap: true,
+                          controller: _btnController,
+                          child: Text(
+                            "User",
+                            style: Theme.of(context)
+                                .textTheme
+                                .subtitle1!
+                                .apply(
+                                  color: Colors.white,
+                                )
+                                .copyWith(fontWeight: FontWeight.w600),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        RoundedLoadingButton(
+                          borderRadius: 20,
+                          height: 30,
+                          width: 100,
+                          onPressed: () async {},
+                          elevation: 5,
+                          color: Colors.white,
+                          animateOnTap: true,
+                          controller: _btnController,
+                          child: Text(
+                            "Celebrity",
+                            style: Theme.of(context)
+                                .textTheme
+                                .subtitle1!
+                                .apply(
+                                  color: Colors.black,
+                                )
+                                .copyWith(fontWeight: FontWeight.w600),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Positioned(
+                    right: 0.0,
+                    left: 0,
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: Align(
+                        alignment: Alignment.topCenter,
+                        child: CircleAvatar(
+                          radius: 30.0,
+                          backgroundColor: Colors.red,
+                          // child: Icon(Icons.close, color: Colors.white),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
+        });
+  }
+
+  _showDialogAddService() {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            backgroundColor: Colors.transparent,
+            contentPadding: EdgeInsets.all(10.0),
+            content: Container(
+              margin: EdgeInsets.only(left: 0.0, right: 0.0),
+              child: Stack(
+                children: <Widget>[
+                  Container(
+                    padding: EdgeInsets.all(20),
+                    margin: EdgeInsets.only(top: 13.0, right: 8.0),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(14),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.1),
+                          spreadRadius: 5,
+                        ),
+                      ],
+                    ),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: <Widget>[
+                        Container(
+                          alignment: Alignment.center,
+                          child: Text(
+                            "Add Service",
+                            style: TextStyle(color: Colors.black, fontSize: 14),
+                          ),
+                        ),
+                        Container(
+                          alignment: Alignment.center,
+                          child: Text(
+                            "At your Service",
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        FormFieldWidget(
+                          controller: serviceTextEditingController,
+                          hintText: 'Service',
+                          textInputType: TextInputType.text,
+                        ),
+                        FormFieldWidget(
+                          controller: priceServiceTextEditingController,
+                          hintText: 'Price for Service',
+                          textInputType: TextInputType.text,
+                        ),
+                        FormFieldWidget(
+                          controller: detailsTextEditingController,
+                          hintText: 'Details about it',
+                          textInputType: TextInputType.multiline,
+                          maxLines: 6,
+                          lines: 6,
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        RoundedLoadingButton(
+                          borderRadius: 20,
+                          height: 40,
+                          width: 100,
+                          onPressed: () async {},
+                          color: Colors.pink,
+                          animateOnTap: true,
+                          controller: _btnController,
+                          child: Text(
+                            "Upload",
+                            style: Theme.of(context)
+                                .textTheme
+                                .subtitle1!
+                                .apply(
+                                  color: Colors.white,
+                                )
+                                .copyWith(fontWeight: FontWeight.w600),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Positioned(
+                    right: 0.0,
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: Align(
+                        alignment: Alignment.topRight,
+                        child: CircleAvatar(
+                          radius: 14.0,
+                          backgroundColor: Colors.red,
+                          child: Icon(Icons.close, color: Colors.white),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
+        });
   }
 
   Widget bodyWidget1(String imgPath, {bool isNotFromMostPopular = false}) {
@@ -167,151 +654,16 @@ class _HomepageState extends State<Homepage> {
     );
   }
 
-  void bottomModelSheet() {
-    showModalBottomSheet(
-        context: context,
-        builder: (context) {
-          return Container(
-            padding: EdgeInsets.symmetric(horizontal: 16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                ListTile(
-                  minLeadingWidth: 0,
-                  title: Text('You are Paying Celebrity for'),
-                  subtitle: Text(
-                    '\u{20B9} 4000',
-                    style: TextStyle(
-                      color: Colors.pink,
-                      fontSize: 18,
-                    ),
-                  ),
-                  trailing: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Your Balance',
-                        style: TextStyle(color: Colors.grey, fontSize: 11),
-                      ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Text(
-                        '0.011',
-                        style: TextStyle(color: Colors.pink, fontSize: 14),
-                      ),
-                    ],
-                  ),
-                ),
-                Text('Select Payment Method'),
-                SizedBox(
-                  height: 10,
-                ),
-                ListTile(
-                  leading: Transform.scale(
-                    scale: 1.5,
-                    child: Checkbox(
-                      checkColor: Colors.white,
-                      fillColor: MaterialStateProperty.resolveWith((v) {
-                        Colors.pink;
-                      }),
-                      activeColor: Colors.pink,
-                      value: true,
-                      shape: CircleBorder(),
-                      onChanged: (bool? value) {
-                        // setState(() {
-                        //   isChecked = value!;
-                        // });
-                      },
-                    ),
-                  ),
-                  title: Text(
-                    'Wallet',
-                    style: TextStyle(fontSize: 18),
-                  ),
-                ),
-                Divider(),
-                ListTile(
-                  leading: Transform.scale(
-                    scale: 1.5,
-                    child: Checkbox(
-                      activeColor: Colors.pink,
-                      checkColor: Colors.white,
-                      fillColor: MaterialStateProperty.resolveWith((v) {
-                        Colors.pink;
-                      }),
-                      value: false,
-                      shape: CircleBorder(),
-                      onChanged: (bool? value) {
-                        // setState(() {
-                        //   isChecked = value!;
-                        // });
-                      },
-                    ),
-                  ),
-                  title: Text(
-                    'Wallet',
-                    style: TextStyle(fontSize: 18),
-                  ),
-                ),
-                Divider(),
-                ListTile(
-                  leading: Transform.scale(
-                    scale: 1.5,
-                    child: Checkbox(
-                      checkColor: Colors.white,
-                      fillColor: MaterialStateProperty.resolveWith((v) {
-                        Colors.pink;
-                      }),
-                      activeColor: Colors.pink,
-                      value: false,
-                      shape: CircleBorder(),
-                      onChanged: (bool? value) {
-                        // setState(() {
-                        //   isChecked = value!;
-                        // });
-                      },
-                    ),
-                  ),
-                  title: Text(
-                    'Credit Card',
-                    style: TextStyle(fontSize: 18),
-                  ),
-                  subtitle: Text('2% Service charge Applicable',
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: Colors.grey,
-                      )),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Align(
-                  alignment: Alignment.center,
-                  child: ElevatedButton(
-                      onPressed: () {},
-                      child: Text(
-                        'Proceed To Pay',
-                        style: TextStyle(
-                            color: whiteColor,
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      style: ElevatedButton.styleFrom(
-                          primary: Colors.pink,
-                          elevation: 0,
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 65, vertical: 20),
-                          shape: const RoundedRectangleBorder(
-                              side: BorderSide(color: Colors.pink),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(30))))),
-                ),
-              ],
-            ),
-          );
-        });
+  Widget listTileWidget(String text, Function onTap) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: ListTile(
+        title: Text(text),
+        onTap: () {
+          onTap();
+        },
+      ),
+    );
   }
 
   @override
@@ -345,14 +697,30 @@ class _HomepageState extends State<Homepage> {
           style: TextStyle(color: Colors.black, fontSize: 16),
         ),
         actions: [
-          appBarIcon('', Icons.message),
+          appBarIcon('', Icons.message, () {
+            Navigator.of(context).pushNamed(InboxScreen.routeName);
+          }),
           const SizedBox(
             width: 10,
           ),
-          appBarIcon('', Icons.notifications_active_outlined),
+          appBarIcon('', Icons.notifications_active_outlined, () {
+            Navigator.of(context).pushNamed(NotificationScreen.routeName);
+          }),
         ],
       ),
-      drawer: Drawer(),
+      drawer: Drawer(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            listTileWidget('Celebrity details screen', () {
+              Navigator.of(context).pushNamed(CelebrityDetailsScreen.routeName);
+            }),
+            listTileWidget('Profile', () {
+              Navigator.of(context).pushNamed(ProfilePage.routeName);
+            }),
+          ],
+        ),
+      ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: Padding(
         padding: const EdgeInsets.only(top: 24.0),
@@ -361,34 +729,57 @@ class _HomepageState extends State<Homepage> {
           width: 70,
           child: FloatingActionButton(
             backgroundColor: Colors.pink,
-            onPressed: () {},
+            onPressed: () {
+              // _showDialogAddService();
+              // _showDialogBookingForm();
+              // _dialog1('SANP OUT OF CASH', 'Please Check your balance',
+              //     'Hold Order', 'Re - Enter Details');
+              // _dialog1(
+              //     'ORDER COMPLETE',
+              //     'Your Order No. #123-456 has been placed',
+              //     'Thanks',
+              //     'Track Order');
+              // _dialog1('CONGRATULATIONS!', 'Your Phone Number is verified',
+              //     'Start It', 'Not Now');
+              // _dialog1('CONGRATULATIONS!', 'Your Account has been created',
+              //     'Visit Profile', 'Not Now');
+              _dialog2();
+            },
             child: const Icon(Icons.search),
             elevation: 2.0,
           ),
         ),
       ),
-      // body: Column(
-      //   children: [
-      //     SizedBox(
-      //       height: height / 3.5,
-      //       child: bodyWidget1('', isNotFromMostPopular: true),
-      //     ),
-      //     const SizedBox(
-      //       height: 10,
-      //     ),
-      //     Padding(
-      //       padding: const EdgeInsets.all(8.0),
-      //       child: Row(
-      //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      //         children: [Text('Most Popular'), Icon(Icons.more_horiz)],
-      //       ),
-      //     ),
-      //     const SizedBox(
-      //       height: 10,
-      //     ),
-      //     bodyWidget1(''),
-      //   ],
-      // ),
+      body: _index == 0
+          ? Column(
+              children: [
+                SizedBox(
+                  height: height / 3.5,
+                  child: bodyWidget1('', isNotFromMostPopular: true),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [Text('Most Popular'), Icon(Icons.more_horiz)],
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                bodyWidget1(''),
+              ],
+            )
+          : _index == 1
+              ? CheckOut()
+              : _index == 2
+                  ? Transactionscreen()
+                  : _index == 3
+                      ? CustomerScreen()
+                      : Container(),
       // body: Column(
       //   children: [
       //     ListTile(
@@ -441,16 +832,17 @@ class _HomepageState extends State<Homepage> {
       //     ),
       //   ],
       // ),
-      // body: CustomerMsg(),
-      // body: CustomerScreen(),
-      // body: Transaction_screen(),
-      body: CheckOut(),
+
       bottomNavigationBar: FABBottomAppBar(
         color: Colors.grey,
         backgroundColor: Colors.white,
         selectedColor: Colors.pink,
         // notchedShape: const CircularNotchedRectangle(),
-        onTabSelected: (val) {},
+        onTabSelected: (val) {
+          setState(() {
+            _index = val;
+          });
+        },
         items: [
           FABBottomAppBarItem(iconData: Icons.home),
           FABBottomAppBarItem(iconData: Icons.search),

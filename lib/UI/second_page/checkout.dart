@@ -1,8 +1,8 @@
-import 'package:dotted_border/dotted_border.dart';
-import 'package:flutter/material.dart';
-import 'package:we_z_you/constants/colors.dart';
+import '../../screens.dart';
 
 class CheckOut extends StatefulWidget {
+  static const String routeName = 'checkout screen';
+
   const CheckOut({Key? key}) : super(key: key);
 
   @override

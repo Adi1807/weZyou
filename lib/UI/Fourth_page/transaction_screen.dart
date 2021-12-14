@@ -1,7 +1,9 @@
-import 'package:flutter/material.dart';
+import '../../screens.dart';
 
-class Transaction_screen extends StatelessWidget {
-  const Transaction_screen({Key? key}) : super(key: key);
+class Transactionscreen extends StatelessWidget {
+  static const String routeName = 'Transaction Screens';
+
+  const Transactionscreen({Key? key}) : super(key: key);
 
   Widget transactionListTile({bool isReceived = false}) {
     return ListTile(

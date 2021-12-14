@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
 class CustomerMsg extends StatelessWidget {
+  static const String routeName = '/CustomerMsgScreen';
+
   const CustomerMsg({Key? key}) : super(key: key);
 
   Widget chatUI({bool isLastChat = false}) {

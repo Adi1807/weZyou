@@ -1,11 +1,10 @@
-import 'package:flutter/material.dart';
-import 'package:we_z_you/UI/Auth_Pages/registration_page.dart';
-import 'package:we_z_you/UI/Auth_Pages/registration_page1.dart';
-import 'package:we_z_you/UI/Homepage/customer_msg.dart';
-import 'package:we_z_you/UI/Homepage/customer_screen.dart';
-import 'package:we_z_you/UI/Homepage/homepage.dart';
-import 'package:we_z_you/UI/splash_screen/splash.dart';
-import 'package:we_z_you/constants/colors.dart';
+import 'package:we_z_you/UI/Fourth_page/transaction_screen.dart';
+import 'package:we_z_you/UI/chat_details_screen.dart';
+import 'package:we_z_you/UI/item_detail_screen.dart';
+import 'package:we_z_you/UI/other_screens/settings.dart';
+import 'package:we_z_you/UI/slider_screen.dart';
+
+import 'screens.dart';
 
 void main(List<String> args) {
   runApp(MyApp());
@@ -18,6 +17,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData.light().copyWith(
+        appBarTheme: AppBarTheme(
+          color: Colors.transparent,
+          elevation: 0,
+        ),
         textTheme: TextTheme(
           bodyText1: TextStyle(fontSize: 14, color: darkpinkColor),
           bodyText2: TextStyle(
@@ -30,10 +33,27 @@ class MyApp extends StatelessWidget {
               fontSize: 20, color: blackColor, fontWeight: FontWeight.bold),
         ),
       ),
-      home: const Homepage(),
+      home: Splash(),
       routes: {
         RegistrationPage.routeName: (_) => const RegistrationPage(),
         RegistrationPage1.routeName: (_) => const RegistrationPage1(),
+        Homepage.routeName: (_) => const Homepage(),
+        CelebrityDetailsScreen.routeName: (_) => const CelebrityDetailsScreen(),
+        CustomerMsg.routeName: (_) => const CustomerMsg(),
+        CustomerScreen.routeName: (_) => const CustomerScreen(),
+        Transactionscreen.routeName: (_) => const Transactionscreen(),
+        DebitCardScreen1.routeName: (_) => const DebitCardScreen1(),
+        ProfilePage.routeName: (_) => const ProfilePage(),
+        CheckOut.routeName: (_) => const CheckOut(),
+        DebitCardScreen2.routeName: (_) => const DebitCardScreen2(),
+        OtpScreen.routeName: (_) => const OtpScreen(),
+        InboxScreen.routeName: (_) => const InboxScreen(),
+        NotificationScreen.routeName: (_) => const NotificationScreen(),
+        PaymentDetails.routeName: (_) => const PaymentDetails(),
+        Settings.routeName: (_) => const Settings(),
+        ChatDetailPage.routeName: (_) => ChatDetailPage(),
+        ItemDetailsScreen.routeName: (_) => ItemDetailsScreen(),
+        SliderScreen.routeName: (_) => SliderScreen(),
       },
     );
   }

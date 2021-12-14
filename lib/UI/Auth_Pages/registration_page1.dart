@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:we_z_you/constants/colors.dart';
+import '../../screens.dart';
 
 class RegistrationPage1 extends StatefulWidget {
   static const String routeName = '/Registration Page1';
@@ -118,7 +117,7 @@ class _RegistrationPage1State extends State<RegistrationPage1> {
                 child: ElevatedButton(
                     onPressed: () {
                       Navigator.of(context)
-                          .pushReplacementNamed(RegistrationPage1.routeName);
+                          .pushReplacementNamed(Homepage.routeName);
                     },
                     child: Text(
                       'Continue',

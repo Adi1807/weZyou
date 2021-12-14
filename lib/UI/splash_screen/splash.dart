@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:we_z_you/UI/Auth_Pages/registration_page.dart';
-import 'package:we_z_you/UI/Auth_Pages/registration_page1.dart';
-import 'package:we_z_you/constants/colors.dart';
+import '../../screens.dart';
 
 class Splash extends StatelessWidget {
   const Splash({Key? key}) : super(key: key);
@@ -23,7 +20,7 @@ class Splash extends StatelessWidget {
             child: ElevatedButton(
                 onPressed: () {
                   Navigator.of(context)
-                      .pushReplacementNamed(RegistrationPage1.routeName);
+                      .pushReplacementNamed(RegistrationPage.routeName);
                 },
                 child: Text(
                   'Get Started',
