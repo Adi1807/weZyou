@@ -1,3 +1,5 @@
+/// This is UI of [code.jpg]
+
 import '../../screens.dart';
 
 class OtpScreen extends StatefulWidget {

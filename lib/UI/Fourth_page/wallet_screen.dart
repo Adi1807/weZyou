@@ -1,3 +1,5 @@
+/// This is file of [your wallet].
+
 import 'package:flutter/material.dart';
 import 'package:we_z_you/constants/colors.dart';
 

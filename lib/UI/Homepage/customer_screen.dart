@@ -1,7 +1,6 @@
-import 'package:dotted_border/dotted_border.dart';
-import 'package:flutter/gestures.dart';
+/// This is file of customer listview
+
 import 'package:flutter/material.dart';
-import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:we_z_you/UI/chat_details_screen.dart';
 
 class CustomerScreen extends StatelessWidget {

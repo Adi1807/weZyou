@@ -1,3 +1,5 @@
+/// This is bottom navbar of home page.
+
 import 'package:flutter/material.dart';
 
 class FABBottomAppBarItem {

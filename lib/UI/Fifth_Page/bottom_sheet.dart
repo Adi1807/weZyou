@@ -1,3 +1,5 @@
+/// This is file of [celebrity pay].
+
 import '../../screens.dart';
 
 void bottomModelSheet1(BuildContext context) {

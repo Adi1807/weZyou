@@ -1,3 +1,5 @@
+/// This is file of [Customer Msg].
+
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';

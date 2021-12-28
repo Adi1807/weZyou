@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "47543792602",
+    "project_id": "wezyou-5675f",
+    "storage_bucket": "wezyou-5675f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:47543792602:android:3a2c2264e5dd90c63d86e3",
+        "android_client_info": {
+          "package_name": "com.example.we_z_you"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "47543792602-k2j32h9f5pppm5igph2f1mpqfgsvrrcl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCEwOrHfoIJ_NQzOpFVkMPsyT_Di7HLvPo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "47543792602-k2j32h9f5pppm5igph2f1mpqfgsvrrcl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,3 +1,5 @@
+/// This is file of [made money].
+
 import '../../screens.dart';
 
 class Transactionscreen extends StatelessWidget {

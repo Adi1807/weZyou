@@ -1,3 +1,5 @@
+/// This is file of [celebrity info].
+
 import '../../screens.dart';
 
 class RegistrationPage extends StatefulWidget {
