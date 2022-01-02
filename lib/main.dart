@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:we_z_you/UI/Fourth_page/transaction_screen.dart';
 import 'package:we_z_you/UI/chat_details_screen.dart';
 import 'package:we_z_you/UI/item_detail_screen.dart';
@@ -6,7 +7,9 @@ import 'package:we_z_you/UI/slider_screen.dart';
 
 import 'screens.dart';
 
-void main(List<String> args) {
+void main(List<String> args) async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 

@@ -1,7 +1,20 @@
+import 'package:we_z_you/Authentication/auth.dart';
+
 import '../../screens.dart';
 
-class Splash extends StatelessWidget {
+class Splash extends StatefulWidget {
   const Splash({Key? key}) : super(key: key);
+
+  @override
+  State<Splash> createState() => _SplashState();
+}
+
+class _SplashState extends State<Splash> {
+  @override
+  void initState() {
+    firebaseUser();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +31,13 @@ class Splash extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context)
-                      .pushReplacementNamed(RegistrationPage.routeName);
+                onPressed: () async {
+                  if (getFirebaseAuth.currentUser == null) {
+                    Navigator.of(context)
+                        .pushReplacementNamed(RegistrationPage1.routeName);
+                  } else {
+                    Navigator.of(context).pushNamed(Homepage.routeName);
+                  }
                 },
                 child: Text(
                   'Get Started',
